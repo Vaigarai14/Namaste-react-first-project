@@ -1,11 +1,14 @@
 {
+  "homepage": "http://Vaigarai14.github.io/Namaste-react-first-project",
   "name": "namaste-react-project",
   "version": "1.0.0",
   "description": "This is namaste react by vaigarai",
   "scripts": {
     "start": "parcel index1.html",
     "build": "parcel bulid index1.html",
-    "test": "jest"
+    "test": "jest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "vaigarai",
   "license": "ISC",
@@ -16,6 +19,7 @@
   "dependencies": {
     "gh-pages": "^6.1.1",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reactdom": "^2.0.0"
   }
 }

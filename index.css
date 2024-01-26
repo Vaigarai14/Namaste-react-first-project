@@ -14,6 +14,8 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 3px 3px 30px rgb(218, 217, 217);
+  height: 100px;
+  overflow: hidden;
 }
 
 ul {
@@ -34,20 +36,18 @@ li a {
 }
 
 li a:hover {
-  color: #e94f3d;
+  color: #ffa939;
 }
 
 #body-container {
   padding: 2em 1em;
-  margin: auto;
-  width: 500px;
-  /* background-color: antiquewhite; */
+  text-align: center;
 }
 
 #searchinput {
   padding: 10px;
   border-radius: 0.5em;
-  border: 2px solid #e94f3d;
+  border: 2px solid #ffa939;
   margin: 1em;
   width: 25em;
 }
@@ -55,7 +55,7 @@ li a:hover {
 #searchbtn {
   padding: 10px 20px;
   border-radius: 0.5em;
-  background-color: #e94f3d;
+  background-color: #ffa939;
   border: none;
   color: white;
   font-size: medium;
@@ -63,6 +63,41 @@ li a:hover {
 
 #searchbtn:focus {
   outline: none;
+}
+
+@media screen and (max-width: 920px) {
+  .header img {
+    width: 200px;
+  }
+
+  .header {
+    font-size: small;
+  }
+}
+@media screen and (max-width: 780px) {
+  .header img {
+    width: 120px;
+  }
+
+  .header {
+    font-size: xx-small;
+  }
+  #searchinput {
+    width: 20vh;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header img {
+    width: 100px;
+  }
+
+  .header {
+    font-size: 0.4em;
+  }
+  #searchinput {
+    width: 20vh;
+  }
 }
 
 /* Card Container */

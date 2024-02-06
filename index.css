@@ -1,12 +1,3 @@
-/* body {
-  margin: 0;
-  padding: 0;
-} */
-
-/* .main-container-of-all {
-  /* background-color: rgb(212, 184, 184); */
-/* } */
-
 .header {
   margin: 0 2em;
   padding: 0 4em;
@@ -59,9 +50,10 @@ li a:hover {
   border: none;
   color: white;
   font-size: medium;
+  cursor: pointer;
 }
 
-#searchbtn:focus {
+#searchinput:focus {
   outline: none;
 }
 

@@ -13,7 +13,7 @@ const RestaurantCard = (props) => {
             <div className='card-details'>
                 <div className="main-feat">
                     <h6>{name}</h6>
-                    <p>{cuisines.join(', ')}</p>
+                    <h5>{cuisines.slice(0, 4).join(" , ") + "..."}</h5>
                 </div>
                 <div className='sub-feat'>
                     <div className='rating'>

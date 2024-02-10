@@ -6,14 +6,14 @@ const RestaurantCard = (props) => {
     const { name, cuisines, avgRatingString, sla, costForTwo, cloudinaryImageId } = restData?.info
 
     return (
-        <div className='res-card'>
-            <div className='res-img'>
+        <div className='res-card '>
+            <div className='res-img '>
                 <img className='img' src={FOOD_IMG + cloudinaryImageId}></img>
             </div>
             <div className='card-details'>
                 <div className="main-feat">
                     <h6>{name}</h6>
-                    <h5>{cuisines.slice(0, 4).join(" , ") + "..."}</h5>
+                    <h5>{cuisines.slice(0, 3).join(" , ") + "..."}</h5>
                 </div>
                 <div className='sub-feat'>
                     <div className='rating'>
@@ -23,7 +23,7 @@ const RestaurantCard = (props) => {
                     <p>{sla.slaString}</p>
                     <p>{costForTwo}</p>
                 </div>
-                <h5>free delivery</h5>
+                <h5 id="freedev">Free delivery</h5>
             </div>
         </div>
     )

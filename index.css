@@ -104,8 +104,8 @@ li a:hover {
   padding: 1em;
   /* border: 1px solid orangered; */
   border-radius: 1em;
-  width: 250px;
-  height: 350px;
+  width: 290px;
+  height: 370px;
 }
 
 .res-card:hover {
@@ -114,7 +114,7 @@ li a:hover {
 
 .res-img {
   /* background-color: antiquewhite; */
-  width: 250px;
+  width: 255px;
   height: 150px;
 }
 
@@ -126,6 +126,10 @@ li a:hover {
 }
 
 /* card details */
+
+.main-feat {
+  padding: 0.2em 0;
+}
 
 .main-feat p {
   height: 25px;
@@ -140,7 +144,8 @@ li a:hover {
 .main-feat h6 {
   margin: 1em 0;
   padding: 0;
-  font-size: medium;
+  font-size: large;
+  font-weight: bold;
 }
 
 .sub-feat p {
@@ -155,6 +160,7 @@ li a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5em 0;
 }
 .sub-feat img {
   width: 1.3em;
@@ -183,4 +189,8 @@ li a:hover {
   flex-wrap: wrap;
   gap: 2em;
   justify-content: center;
+}
+
+#freedev {
+  padding: 0.4em 0;
 }

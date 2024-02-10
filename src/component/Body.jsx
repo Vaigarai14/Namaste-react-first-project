@@ -11,7 +11,6 @@ const Body = () => {
 
     useEffect(() => {
         fetchdata();
-        console.log("body render");
     }, [])
 
 
@@ -21,11 +20,9 @@ const Body = () => {
         let Restaurentdatas = jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
         setorignallist(Restaurentdatas)
         setfilteredlistofitem(Restaurentdatas)
-        console.log(Restaurentdatas);
     }
 
 
-    console.log(orignallist.length);
     return orignallist.length === 0 ? <h1>Loading........</h1> : (
         <div>
             <div id="body-container">

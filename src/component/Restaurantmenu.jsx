@@ -52,7 +52,7 @@ const RestMenu = (() => {
             </div>
             {
                 dropdowncard.map(({ card: { info } }) => (
-                    <div className='px-8 p-4 flex justify-between items-center' key={info.id}>
+                    <div className='px-8 p-4 flex justify-between items-center shadow-xl rounded-xl m-10' key={info.id}>
                         <div className=''>
                             <h1 className='py-4 text-xl font-bold'>{info.name}</h1>
                             <p className='font-semibold '> ₹ {info.price / 100 || info.defaultPrice / 100}

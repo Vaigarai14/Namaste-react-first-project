@@ -7,6 +7,7 @@ const RestMenu = (() => {
     const [restmenu, setrestmenu] = useState([]);
     const [dropdowncard, setdropdowncard] = useState([])
 
+
     const { id } = useParams()
     console.log(id);
 
@@ -20,8 +21,8 @@ const RestMenu = (() => {
         let restdata = await data.json();
         setrestmenu(restdata?.data?.cards[0]?.card?.card?.info)
         console.log(restdata);
-        setdropdowncard(restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[0]?.itemCards)
-
+        setdropdowncard(restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
+            || restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[0]?.itemCards)
         console.log(restdata)
     }
 
@@ -59,10 +60,11 @@ const RestMenu = (() => {
                                     {info.offerTags[0].title} | {info.offerTags[0].subTitle}
                                 </span> */}
                             </p>
+
                             <p className='py-2 w-[45em] text-sm text-slate-500'>{info.description}</p>
                         </div>
                         <div className='text-center'>
-                            <img className='size-28 rounded-md object-cover'
+                            <img className='size-32 rounded-md object-cover'
                                 alt='Image not found'
                                 src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/' + info.imageId}></img>
                             <button className='rounded-lg text-center px-8 border-2 border-gray-300 text-sm'>Add</button>

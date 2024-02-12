@@ -24,14 +24,34 @@ class Contactpage extends React.Component {
                 <h2>{this.props.name}</h2>
                 <h2>{this.props.location}</h2>
                 <UserClass name="first" location="kanyakumari" />
-                <UserClass name="secound" location="kanyakumari" />
-                <UserClass name="third" location="kanyakumari" />
+                <UserClass name="secound" location="chennai" />
             </div >)
     }
 }
 
 export default Contactpage;
 
+
+/* 
+parent constructor 
+parent Render 
+    -lisa constructor
+    -lisa Render
+
+    -kedi constructor
+    -kedi Render
+
+    suba constructor
+    suba Render
+
+-lisa mout
+-kedi mout
+-suba mout
+-parent mout
+
+
+
+*/
 
 
 /* 

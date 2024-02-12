@@ -1,18 +1,17 @@
 import { Component } from "react";
-import Secoundclass from "./Secoundclass";
 
-class UserClass extends Component {
+class Secoundclass extends Component {
     constructor(props) {
         super(props)
-        console.log(this.props.name + "child construtor");
+        console.log(this.props.name + "secound child construtor");
     }
 
     componentDidMount() {
-        console.log(this.props.name + "child mout");
+        console.log(this.props.name + "secound child mout");
     }
 
     render() {
-        console.log(this.props.name + "child render");
+        console.log(this.props.name + "secound child render");
         return (
 
             <div className="my-8 bg-slate-300">
@@ -25,4 +24,4 @@ class UserClass extends Component {
 }
 
 
-export default UserClass;
+export default Secoundclass;

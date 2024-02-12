@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Aboutpage = ((props) => {
 
     let [count] = useState(0)
@@ -13,4 +11,7 @@ const Aboutpage = ((props) => {
         </div>
     )
 })
+
+
+
 export default Aboutpage;

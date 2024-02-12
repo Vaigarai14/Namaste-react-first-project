@@ -30,11 +30,11 @@ const layout = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <Aboutpage />
+                element: <Aboutpage name={"vaigarai (function)"} location={"chennai (function)"} />
             },
             {
                 path: '/contact',
-                element: <Contactpage />
+                element: <Contactpage name={"vaigarai (class)"} location={"chennai (class)"} />
             },
             {
                 path: '/restaurant/:id',

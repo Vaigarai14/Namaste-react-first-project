@@ -19,10 +19,11 @@ class UserClass extends Component {
                 <h1>This is Userpage page....💕</h1>
                 <p>{this.props.name}</p>
                 <p>{this.props.location}</p>
+                <Secoundclass name="secound" location="kerala" />
             </div>
         )
     }
 }
-
-
 export default UserClass;
+
+

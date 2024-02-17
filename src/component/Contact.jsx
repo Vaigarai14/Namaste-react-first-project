@@ -17,7 +17,6 @@ class Contactpage extends React.Component {
 
 
     render() {
-        console.log("parent render");
         return (
             <div className="p-4">
                 <h1>This is contact page......🙈</h1>

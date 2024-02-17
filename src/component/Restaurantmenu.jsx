@@ -1,32 +1,42 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { RESTAURANTGROUPCARD } from '../utils/constants';
+import useRestaurentMenu from '../utils/useRestaurentMenu';
 
 const RestMenu = (() => {
-
-    const [restmenu, setrestmenu] = useState([]);
-    const [dropdowncard, setdropdowncard] = useState([])
-
-
     const { id } = useParams()
-    console.log(id);
+    const { restmenu, dropdowncard } = useRestaurentMenu(id)
+    console.log(dropdowncard);
 
-    useEffect(() => {
-        datas();
-    }, [])
+    if (!restmenu) {
+        return <div>Loading...</div>;
+    }
+    console.log(restmenu);
+    const { data: { cards: [card] } } = restmenu
 
-    const datas = async () => {
-        let data = await fetch(RESTAURANTGROUPCARD
-            + id)
-        let restdata = await data.json();
-        setrestmenu(restdata?.data?.cards[0]?.card?.card?.info)
-        console.log(restdata);
-        setdropdowncard(restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
-            || restdata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.categories[0]?.itemCards)
-        console.log(restdata)
+    const {
+        name,
+        cuisines,
+        avgRatingString,
+        costForTwoMessage,
+        sla,
+        totalRatingsString,
+        areaName
+    } = card?.card?.card?.info || {};
+
+    let item = dropdowncard?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
+
+    let itemCards = []
+    if (item?.categories) {
+        itemCards = item?.categories[0]?.itemCards
+    }
+    else if (item?.categories) {
+        itemCards = item?.categories
+    }
+    else if (item?.itemCards) {
+        itemCards = item?.itemCards
     }
 
-    const { name, cuisines, avgRatingString, costForTwoMessage, sla, totalRatingsString, areaName } = restmenu
+    // console.log(itemCards);
+    // console.log(item);
 
     return (
         <div className=' w-[60em] m-auto '>
@@ -51,7 +61,7 @@ const RestMenu = (() => {
                 </div>
             </div>
             {
-                dropdowncard.map(({ card: { info } }) => (
+                itemCards.map(({ card: { info } }) => (
                     <div className='px-8 p-4 flex justify-between items-center shadow-xl rounded-xl m-10' key={info.id}>
                         <div className=''>
                             <h1 className='py-4 text-xl font-bold'>{info.name}</h1>

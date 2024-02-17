@@ -3,15 +3,15 @@ import { Component } from "react";
 class Secoundclass extends Component {
     constructor(props) {
         super(props)
-        console.log(this.props.name + "secound child construtor");
+        console.log(this.props.name + " child construtor");
     }
 
     componentDidMount() {
-        console.log(this.props.name + "secound child mout");
+        console.log(this.props.name + " child mout");
     }
 
     render() {
-        console.log(this.props.name + "secound child render");
+        console.log(this.props.name + " child render");
         return (
 
             <div className="my-8 bg-slate-300">

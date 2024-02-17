@@ -1,8 +1,11 @@
 import RestaurantCard from './RestaurantCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import useonlinestatus from '../utils/useonlinestatus'
+
 
 const Body = () => {
+    const onlinestatus = useonlinestatus()
 
     let [orignallist, setorignallist] = useState([]);
 
@@ -23,8 +26,8 @@ const Body = () => {
         setfilteredlistofitem(Restaurentdatas)
     }
 
-
-    return orignallist.length === 0 ? <h1>Loading........</h1> : (
+    return onlinestatus === false ? <h1>"Please check your network once again❌❌❌❌"</h1> : (
+        // return orignallist.length === 0 ? <h1>Loading........</h1> : (
         <div>
             <div id="body-container">
                 <input

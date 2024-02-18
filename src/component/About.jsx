@@ -1,17 +1,30 @@
-const Aboutpage = ((props) => {
+import { useEffect, useState } from "react";
+const About = (() => {
 
-    let [count] = useState(0)
+    let [user, setuser] = useState([])
+
+    useEffect(() => {
+        fetchdata();
+    }, [])
+
+    const fetchdata = async () => {
+        let data = await fetch('https://api.github.com/users/vaigarai14')
+        let userdata = await data.json()
+        console.log(userdata);
+        setuser(userdata)
+    }
 
     return (
-        <div>
-            <h1>This is About Page .....🙊</h1>
-            <p>{props.name}</p>
-            <p>{props.location}</p>
-            <p>Count: {count}</p>
+        <div className="flex items-center mx-52 my-14">
+            <img className="w-52 h-52 border-2 border-gray-400 rounded-md p-1 mx-4 m-3" src={user.avatar_url}></img>
+            <div >
+                <h1 className="text-4xl">{user.name}</h1>
+                <p className="my-3 mx-1">{user.bio}</p>
+            </div>
         </div>
     )
 })
 
 
 
-export default Aboutpage;
+export default About;

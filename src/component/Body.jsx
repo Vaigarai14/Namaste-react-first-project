@@ -2,6 +2,7 @@ import RestaurantCard from './RestaurantCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useonlinestatus from '../utils/useonlinestatus'
+import Shimmer from './Shimmer';
 
 
 const Body = () => {
@@ -26,48 +27,48 @@ const Body = () => {
         setfilteredlistofitem(Restaurentdatas)
     }
 
-    return onlinestatus === false ? <h1>"Please check your network once again❌❌❌❌"</h1> : (
-        // return orignallist.length === 0 ? <h1>Loading........</h1> : (
-        <div>
-            <div id="body-container">
-                <input
-                    id="searchinput"
-                    type="search"
-                    name="search"
-                    placeholder='Search the items!!!'
-                    value={searchText}
-                    onChange={((e) => {
-                        return setsearchText(e.target.value)
-                    })}
-                ></input>
-                <button
-                    onClick={(() => {
-                        let filteredlists = orignallist.filter((ele) => {
-                            return ele.info.name.toLowerCase().includes(searchText.toLowerCase())
-                        })
-                        setfilteredlistofitem(filteredlists)
-                    })}
-                    id="searchbtn"
-                >Search</button>
-                <button onClick={() => {
-                    const filteredlisted = orignallist.filter(
-                        (items) => {
-                            return items.info.avgRating > 4.3
-                        })
-                    setfilteredlistofitem(filteredlisted);
-                }}
-                    id="searchbtn">Top rated Restaurents</button>
-            </div>
+    return onlinestatus === false ? <div className='items-center h-[35em] flex justify-center'><img src='https://cdni.iconscout.com/illustration/premium/thumb/man-upset-with-no-wifi-4898768-4084522.png'></img></div> :
+        orignallist.length === 0 ? <Shimmer /> : (
+            <div>
+                <div id="body-container">
+                    <input
+                        id="searchinput"
+                        type="search"
+                        name="search"
+                        placeholder='Search the items!!!'
+                        value={searchText}
+                        onChange={((e) => {
+                            return setsearchText(e.target.value)
+                        })}
+                    ></input>
+                    <button
+                        onClick={(() => {
+                            let filteredlists = orignallist.filter((ele) => {
+                                return ele.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            })
+                            setfilteredlistofitem(filteredlists)
+                        })}
+                        id="searchbtn"
+                    >Search</button>
+                    <button onClick={() => {
+                        const filteredlisted = orignallist.filter(
+                            (items) => {
+                                return items.info.avgRating > 4.3
+                            })
+                        setfilteredlistofitem(filteredlisted);
+                    }}
+                        id="searchbtn">Top rated Restaurents</button>
+                </div>
 
-            <div className="restaur-container">
-                {
-                    filteredlistofitem.map((rest) => {
-                        return <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}><RestaurantCard restData={rest} /></Link>
-                    })
-                }
-            </div>
-        </div >
-    )
+                <div className="restaur-container">
+                    {
+                        filteredlistofitem.map((rest) => {
+                            return <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}><RestaurantCard restData={rest} /></Link>
+                        })
+                    }
+                </div>
+            </div >
+        )
 }
 
 export default Body; 

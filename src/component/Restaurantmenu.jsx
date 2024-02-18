@@ -5,19 +5,8 @@ const RestMenu = (() => {
     const { id } = useParams()
     const { restmenu, dropdowncard } = useRestaurentMenu(id)
 
-
-    // console.log(onlinestatus);
-
-    // onlinestatus ? console.log("your'e in online") : console.log("your'e in offline");
-
-    // if (onlinestatus === true) {
-    //     console.log("online 😁");
-    // } else {
-    //     console.log(" offline bro 🤐");
-    // }
-
     if (!restmenu) {
-        return <div>Loading...</div>;
+        return <Shimmer />;
     }
     const { data: { cards: [card] } } = restmenu
 

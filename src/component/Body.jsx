@@ -29,9 +29,10 @@ const Body = () => {
 
     return onlinestatus === false ? <div className='items-center h-[35em] flex justify-center'><img src='https://cdni.iconscout.com/illustration/premium/thumb/man-upset-with-no-wifi-4898768-4084522.png'></img></div> :
         orignallist.length === 0 ? <Shimmer /> : (
-            <div>
-                <div id="body-container">
+            <div >
+                <div id="body-container" className='flex justify-center m-14 mb-2'>
                     <input
+                        className='outline-none p-3 w-80 border-2 rounded-lg border-[#ffa939]'
                         id="searchinput"
                         type="search"
                         name="search"
@@ -42,6 +43,7 @@ const Body = () => {
                         })}
                     ></input>
                     <button
+                        className='hover:bg-white hover:border-[#ffa939] hover:text-[#ffa939]  w-24 font-semibold rounded-lg bg-[#ffa939] border-2 text-white ml-4'
                         onClick={(() => {
                             let filteredlists = orignallist.filter((ele) => {
                                 return ele.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -50,17 +52,19 @@ const Body = () => {
                         })}
                         id="searchbtn"
                     >Search</button>
-                    <button onClick={() => {
-                        const filteredlisted = orignallist.filter(
-                            (items) => {
-                                return items.info.avgRating > 4.3
-                            })
-                        setfilteredlistofitem(filteredlisted);
-                    }}
+                    <button
+                        className='w-48 hover:bg-white hover:border-[#ffa939] hover:text-[#ffa939]  font-semibold rounded-lg bg-[#ffa939] border-2 text-white ml-4'
+                        onClick={() => {
+                            const filteredlisted = orignallist.filter(
+                                (items) => {
+                                    return items.info.avgRating > 4.3
+                                })
+                            setfilteredlistofitem(filteredlisted);
+                        }}
                         id="searchbtn">Top rated Restaurents</button>
                 </div>
 
-                <div className="restaur-container">
+                <div className="restaur-container flex flex-wrap justify-evenly">
                     {
                         filteredlistofitem.map((rest) => {
                             return <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}><RestaurantCard restData={rest} /></Link>

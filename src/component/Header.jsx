@@ -11,19 +11,21 @@ export const Header = () => {
     const onlinestatus = useonlinestatus()
 
     return (
-        <div className='header'>
+        <div className='font-[Basis Grotesque Pro] px-8
+         header flex items-center justify-between
+          overflow-hidden h-28 m-4 shadow-xl'>
             <div className='logo'>
                 <img
                     src={LOGO_URL}
                     width={'200em'}></img>
             </div>
-            <div id='nav-tabs'>
-                <ul>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/about'>About Us</Link></li>
-                    <li><Link to='/contact'>Contact Us</Link></li>
-                    {onlinestatus === true ? <li><Link to='#'>Cart ✅</Link></li> : <li><Link to='#'>Cart 🔴</Link></li>}
-                    <button className='px-4 p-2 bg-[#ffa939] text-white rounded-lg outline-none'
+            <div id='nav-tabs' >
+                <ul className='flex '>
+                    <li className='px-4 py-2 font-semibold text-xl'><Link to='/'>Home</Link></li>
+                    <li className='px-4 py-2 font-semibold text-xl'><Link to='/about'>About Us</Link></li>
+                    <li className='px-4 py-2 font-semibold text-xl'><Link to='/contact'>Contact Us</Link></li>
+                    {onlinestatus === true ? <li className='px-4 py-2 font-semibold text-xl'><Link to='#'>Cart ✅</Link></li> : <li><Link to='#'>Cart 🔴</Link></li>}
+                    <button className='item-center px-4 py-2 bg-[#ffa939] text-white rounded-lg outline-none'
                         onClick={() => {
                             btnnames === "Login" ?
                                 setbtnname("Logout") :
@@ -32,7 +34,7 @@ export const Header = () => {
                         }} id="loginbtn">{btnnames}</button>
                 </ul>
             </div >
-        </div>
+        </div >
     )
 }
 

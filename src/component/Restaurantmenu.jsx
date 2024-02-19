@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useRestaurentMenu from '../utils/useRestaurentMenu';
+import Shimmer from './Shimmer';
 
 const RestMenu = (() => {
     const { id } = useParams()

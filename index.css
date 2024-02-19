@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 .header {
   margin: 0 2em;
   padding: 0 4em;
@@ -99,21 +99,19 @@ li a:hover {
 
 /* Card Container */
 
-.res-card {
+/* .res-card {
   font-family: "Basis Grotesque Pro";
   padding: 1em;
-  /* border: 1px solid orangered; */
   border-radius: 1em;
   width: 290px;
   height: 370px;
-}
+} */
 
-.res-card:hover {
+/* .res-card:hover {
   box-shadow: 2px 2px 10px gray;
 }
 
 .res-img {
-  /* background-color: antiquewhite; */
   width: 255px;
   height: 150px;
 }
@@ -123,10 +121,10 @@ li a:hover {
   height: 100%;
   border-radius: 1em;
   object-fit: cover;
-}
+} */
 
 /* card details */
-
+/* 
 .main-feat {
   padding: 0.2em 0;
 }
@@ -152,11 +150,10 @@ li a:hover {
   display: inline;
   font-weight: bold;
   font-size: small;
-}
-
+} */
+/* 
 .sub-feat {
   width: 100%;
-  /* background-color: antiquewhite; */
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -181,10 +178,10 @@ li a:hover {
 .rating p {
   padding: 0 0.1em;
   letter-spacing: 0.2em;
-}
+} */
 
 /* main component */
-.restaur-container {
+/* .restaur-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
@@ -193,4 +190,4 @@ li a:hover {
 
 #freedev {
   padding: 0.4em 0;
-}
+} */

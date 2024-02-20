@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import useonlinestatus from '../utils/useonlinestatus'
 import Shimmer from './Shimmer';
 
-
-
 const Body = () => {
     const onlinestatus = useonlinestatus()
 

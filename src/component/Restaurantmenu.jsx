@@ -1,15 +1,15 @@
 import { useParams } from 'react-router-dom';
 import useRestaurentMenu from '../utils/useRestaurentMenu';
 import Shimmer from './Shimmer';
+import { Restaurentcarddropdown } from './Restaurentcarddropdown';
 
 const RestMenu = (() => {
     const { id } = useParams()
-    const { restmenu, dropdowncard } = useRestaurentMenu(id)
+    const { restmenu, dropdowncard } = useRestaurentMenu(id)   //api data 
 
     if (!restmenu) {
         return <Shimmer />;
     }
-    const { data: { cards: [card] } } = restmenu
 
     const {
         name,
@@ -19,23 +19,10 @@ const RestMenu = (() => {
         sla,
         totalRatingsString,
         areaName
-    } = card?.card?.card?.info || {};
+    } = restmenu.data.cards[2].card.card.info
 
-    let item = dropdowncard?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-
-    let itemCards = []
-    if (item?.categories) {
-        itemCards = item?.categories[0]?.itemCards
-    }
-    else if (item?.categories) {
-        itemCards = item?.categories
-    }
-    else if (item?.itemCards) {
-        itemCards = item?.itemCards
-    }
-
-    console.log(itemCards);
-    console.log(item);
+    const catogory = dropdowncard?.data?.cards[4]?.groupedCard
+        ?.cardGroupMap?.REGULAR?.cards.filter((c) => { return c?.card?.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' })
 
     return (
         <div className=' w-[60em] m-auto '>
@@ -59,37 +46,31 @@ const RestMenu = (() => {
                     <p> {costForTwoMessage}</p>
                 </div>
             </div>
-            {
-                itemCards.map(({ card: { info } }) => (
-                    <div className='px-8 p-4 flex justify-between items-center shadow-xl rounded-xl m-10' key={info.id}>
-                        <div className=''>
-                            <h1 className='py-4 text-xl font-bold'>{info.name}</h1>
-                            <p className='font-semibold '> ₹ {info.price / 100 || info.defaultPrice / 100}
-                            </p>
-
-                            <p className='py-2 w-[45em] text-sm text-slate-500'>{info.description}</p>
-                        </div>
-                        <div className='text-center'>
-                            <img className='size-32 rounded-md object-cover'
-                                alt='Image not found'
-                                src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/' + info.imageId}></img>
-                            <button className='rounded-lg text-center px-8 border-2 border-gray-300 text-sm'>Add</button>
-                        </div>
-                    </div >
-                )
-                )
-            }
+            <div> {catogory.map((element) => < Restaurentcarddropdown key={element?.card?.card?.title} title={element} />)}
+            </div>
         </div>)
 })
+
+export default RestMenu
 
 
 {
     /* <span className='ml-4 p-1 text-sm  text-red-500 bg-red-100'>
     {info.offerTags[0].title} | {info.offerTags[0].subTitle </span> */
 }
+// let item = props?.title?.data?.cards[4]?.groupedCard
+//     ?.cardGroupMap?.REGULAR?.cards
 
+// const catogory = item.filter((c) => { return c?.card?.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' })
 
-
-export default RestMenu
+// console.log(catogory);
 
 // [2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards[0]
+// let item = dropdowncard?.data?.cards[4]?.groupedCard
+//     ?.cardGroupMap?.REGULAR?.cards
+// // [2]?.card?.card
+
+// card?.card?.card?.info || {};
+
+// const { data: { cards: [card] } } = restmenu
+

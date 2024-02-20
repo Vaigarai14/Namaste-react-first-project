@@ -34,8 +34,8 @@ const RestMenu = (() => {
         itemCards = item?.itemCards
     }
 
-    // console.log(itemCards);
-    // console.log(item);
+    console.log(itemCards);
+    console.log(item);
 
     return (
         <div className=' w-[60em] m-auto '>
@@ -65,9 +65,6 @@ const RestMenu = (() => {
                         <div className=''>
                             <h1 className='py-4 text-xl font-bold'>{info.name}</h1>
                             <p className='font-semibold '> ₹ {info.price / 100 || info.defaultPrice / 100}
-                                {/* <span className='ml-4 p-1 text-sm  text-red-500 bg-red-100'>
-                                    {info.offerTags[0].title} | {info.offerTags[0].subTitle}
-                                </span> */}
                             </p>
 
                             <p className='py-2 w-[45em] text-sm text-slate-500'>{info.description}</p>
@@ -84,6 +81,12 @@ const RestMenu = (() => {
             }
         </div>)
 })
+
+
+{
+    /* <span className='ml-4 p-1 text-sm  text-red-500 bg-red-100'>
+    {info.offerTags[0].title} | {info.offerTags[0].subTitle </span> */
+}
 
 
 

@@ -1,18 +1,23 @@
-import RestaurantCard from './RestaurantCard'
+import RestaurantCard, { withpromotedlabel } from './RestaurantCard'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useonlinestatus from '../utils/useonlinestatus'
 import Shimmer from './Shimmer';
 
 
+
 const Body = () => {
     const onlinestatus = useonlinestatus()
+
+    const Newpromotedcard = withpromotedlabel(RestaurantCard)
 
     let [orignallist, setorignallist] = useState([]);
 
     let [filteredlistofitem, setfilteredlistofitem] = useState([])
 
     let [searchText, setsearchText] = useState("");
+
+    console.log(orignallist);
 
     useEffect(() => {
         fetchdata();
@@ -30,7 +35,7 @@ const Body = () => {
     return onlinestatus === false ? <div className='items-center h-[35em] flex justify-center'><img src='https://cdni.iconscout.com/illustration/premium/thumb/man-upset-with-no-wifi-4898768-4084522.png'></img></div> :
         orignallist.length === 0 ? <Shimmer /> : (
             <div >
-                <div id="body-container" className='flex justify-center m-14 mb-2'>
+                <div id="body-container" className='flex justify-center m-12'>
                     <input
                         className='outline-none p-3 w-80 border-2 rounded-lg border-[#ffa939]'
                         id="searchinput"
@@ -64,10 +69,13 @@ const Body = () => {
                         id="searchbtn">Top rated Restaurents</button>
                 </div>
 
-                <div className="restaur-container flex flex-wrap justify-evenly">
+                <div className="restaur-container flex flex-wrap justify-evenly ">
                     {
                         filteredlistofitem.map((rest) => {
-                            return <Link key={rest.info.id} to={"/restaurant/" + rest.info.id}><RestaurantCard restData={rest} /></Link>
+                            return <Link key={rest.info.id}
+                                to={"/restaurant/" + rest.info.id}>
+                                {rest.info.aggregatedDiscountInfoV2 !== undefined ? <RestaurantCard restData={rest} />
+                                    : <Newpromotedcard restData={rest} />}</Link>
                         })
                     }
                 </div>

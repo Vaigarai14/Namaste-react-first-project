@@ -1,12 +1,12 @@
 
-export const Restaurenteachitem = (props) => {
+export const Restaurenteachitem = ({ eachcard }) => {
     return (
         <div>
             {
-                props.eachcard.title.card.card.itemCards.map(({ card: { info } }) => (
+                eachcard.card.card.itemCards.map(({ card: { info } }) => (
                     <div className=' flex justify-between items-center border-b-2 pb-4 pt-2 my-1' key={info.id}>
                         <div className=''>
-                            <h1 className='py-4 text-lg font-semibold'>{info.name}</h1>
+                            <h1 className='py-4 text-lg '>{info.name}</h1>
                             <p className='font-semibold '> ₹ {info.price / 100 || info.defaultPrice / 100}
                             </p>
 

@@ -2,10 +2,14 @@ import { useParams } from 'react-router-dom';
 import useRestaurentMenu from '../utils/useRestaurentMenu';
 import Shimmer from './Shimmer';
 import { Restaurentcarddropdown } from './Restaurentcarddropdown';
+import { useState } from 'react';
 
 const RestMenu = (() => {
     const { id } = useParams()
     const { restmenu, dropdowncard } = useRestaurentMenu(id)   //api data 
+
+    const [showitem, setshowitem] = useState(0)
+
 
     if (!restmenu) {
         return <Shimmer />;
@@ -46,7 +50,16 @@ const RestMenu = (() => {
                     <p> {costForTwoMessage}</p>
                 </div>
             </div>
-            <div> {catogory.map((element) => < Restaurentcarddropdown key={element?.card?.card?.title} title={element} />)}
+            <div>
+                {catogory.map((element, index) =>
+                    < Restaurentcarddropdown
+                        key={element?.card?.card?.title}
+                        data={element}
+                        showitem={index === showitem && true}
+                        a={() => setshowitem(index)}
+                    />
+                )
+                }
             </div>
         </div>)
 })

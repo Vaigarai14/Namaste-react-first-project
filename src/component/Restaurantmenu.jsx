@@ -8,8 +8,14 @@ const RestMenu = (() => {
     const { id } = useParams()
     const { restmenu, dropdowncard } = useRestaurentMenu(id)   //api data 
 
-    const [showitem, setshowitem] = useState(0)
+    const [showitem, setshowitem] = useState(false)
 
+    const toggleitem = (index) => {
+        setshowitem(prestate => {
+            // console.log(prestate);
+            return (prestate === index ? false : index)
+        })
+    }
 
     if (!restmenu) {
         return <Shimmer />;
@@ -25,8 +31,13 @@ const RestMenu = (() => {
         areaName
     } = restmenu.data.cards[2].card.card.info
 
-    const catogory = dropdowncard?.data?.cards[4]?.groupedCard
-        ?.cardGroupMap?.REGULAR?.cards.filter((c) => { return c?.card?.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' })
+    let groupedcardapi = dropdowncard?.data?.cards[4]?.groupedCard
+        ?.cardGroupMap?.REGULAR?.cards || dropdowncard?.data?.cards[3]?.groupedCard
+            ?.cardGroupMap?.REGULAR?.cards
+
+    // console.log(groupedcardapi);
+
+    const catogory = groupedcardapi.filter((c) => { return c?.card?.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' })
 
     return (
         <div className=' w-[60em] m-auto '>
@@ -51,13 +62,15 @@ const RestMenu = (() => {
                 </div>
             </div>
             <div>
-                {catogory.map((element, index) =>
-                    < Restaurentcarddropdown
-                        key={element?.card?.card?.title}
+                {catogory.map((element, index) => {
+                    return < Restaurentcarddropdown
+                        key={element?.card?.card?.title
+                        }
                         data={element}
-                        showitem={index === showitem && true}
-                        a={() => setshowitem(index)}
+                        showitem={index === showitem ? true : false}
+                        showalldata={() => toggleitem(index)}
                     />
+                }
                 )
                 }
             </div>

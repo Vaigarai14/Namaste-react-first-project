@@ -15,7 +15,7 @@ const Body = () => {
 
     let [searchText, setsearchText] = useState("");
 
-    console.log(orignallist);
+    // console.log(orignallist);
 
     useEffect(() => {
         fetchdata();

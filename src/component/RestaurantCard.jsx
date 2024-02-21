@@ -36,7 +36,7 @@ const RestaurantCard = (props) => {
 // input (Restaurent card) => output (new enhaced label card)
 export const withpromotedlabel = (RestaurantCard) => {
     return (props) => {
-        console.log(props.restData.info);
+        // console.log(props.restData.info);
         return (
             <div className=''>
                 <RestaurantCard {...props} />

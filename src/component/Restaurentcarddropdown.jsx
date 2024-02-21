@@ -1,11 +1,12 @@
 import { Restaurenteachitem } from './Restauranteachitem'
 
-export const Restaurentcarddropdown = ({ data, showitem, a }) => {
+export const Restaurentcarddropdown = ({ data, showitem, showalldata }) => {
     const { title } = data.card?.card
 
     const handledata = () => {
-        a()
+        showalldata()
     }
+
 
     return (
         <div className="flex justify-center">

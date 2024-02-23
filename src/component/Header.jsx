@@ -13,13 +13,13 @@ export const Header = () => {
     return (
         <div className='font-[Basis Grotesque Pro] px-8
          header flex items-center justify-between
-          overflow-hidden h-28 m-4 shadow-xl'>
-            <div className='logo'>
+          overflow-hidden h-28 m-4 shadow-xl sm:text-red-900 '>
+            <div className='logo '>
                 <img
                     src={LOGO_URL}
                     width={'200em'}></img>
             </div>
-            <div id='nav-tabs' >
+            <div id='nav-tabs' className='' >
                 <ul className='flex '>
                     <li className='px-4 py-2 font-semibold text-xl'><Link to='/'>Home</Link></li>
                     <li className='px-4 py-2 font-semibold text-xl'><Link to='/about'>About Us</Link></li>

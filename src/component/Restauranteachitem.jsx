@@ -27,16 +27,3 @@ export const Restaurenteachitem = ({ eachcard }) => {
     )
 }
 
-//     console.log(props);
-//     let item = props?.title?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-
-//     let itemCards = []
-//     if (item?.categories) {
-//         itemCards = item?.categories[0]?.itemCards
-//     }
-//     else if (item?.categories) {
-//         itemCards = item?.categories
-//     }
-//     else if (item?.itemCards) {
-//         itemCards = item?.itemCards
-//     }

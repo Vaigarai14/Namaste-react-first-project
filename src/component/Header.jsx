@@ -1,14 +1,19 @@
 import { LOGO_URL } from '../utils/constants'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import useonlinestatus from '../utils/useonlinestatus'
+import UserContext from '../utils/UserContext'
 
 
 export const Header = () => {
+
+
     let btnname = "Login"
 
     const [btnnames, setbtnname] = useState(btnname)
     const onlinestatus = useonlinestatus()
+
+    const { userName } = useContext(UserContext)
 
     return (
         <div className='font-[Basis Grotesque Pro] px-8
@@ -32,6 +37,7 @@ export const Header = () => {
                                 setbtnname("Login");
 
                         }} id="loginbtn">{btnnames}</button>
+                    <li className='px-4 py-2 font-semibold text-xl'>{userName}</li>
                 </ul>
             </div >
         </div >

@@ -5,8 +5,12 @@ import { Restaurentcarddropdown } from './Restaurentcarddropdown';
 import { useState } from 'react';
 
 const RestMenu = (() => {
+
     const { id } = useParams()
     const { restmenu, dropdowncard } = useRestaurentMenu(id)   //api data 
+
+    console.log(restmenu);
+
 
     const [showitem, setshowitem] = useState(false)
 
@@ -29,11 +33,12 @@ const RestMenu = (() => {
         sla,
         totalRatingsString,
         areaName
-    } = restmenu.data.cards[2].card.card.info
+    } = restmenu.data.cards[0].card.card.info || restmenu.data.cards[2].card.card.info
 
     let groupedcardapi = dropdowncard?.data?.cards[4]?.groupedCard
         ?.cardGroupMap?.REGULAR?.cards || dropdowncard?.data?.cards[3]?.groupedCard
-            ?.cardGroupMap?.REGULAR?.cards
+            ?.cardGroupMap?.REGULAR?.cards || dropdowncard?.data?.cards[2]?.groupedCard
+                ?.cardGroupMap?.REGULAR?.cards
 
     // console.log(groupedcardapi);
 

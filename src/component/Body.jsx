@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useonlinestatus from '../utils/useonlinestatus'
 import Shimmer from './Shimmer';
+import { useContext } from 'react';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
     const onlinestatus = useonlinestatus()
@@ -14,6 +16,8 @@ const Body = () => {
     let [filteredlistofitem, setfilteredlistofitem] = useState([])
 
     let [searchText, setsearchText] = useState("");
+
+    const { setname } = useContext(UserContext)
 
     // console.log(orignallist);
 
@@ -43,6 +47,7 @@ const Body = () => {
                         value={searchText}
                         onChange={((e) => {
                             return setsearchText(e.target.value)
+                            // , setname(e.target.value)  // use Context used here!!!!!!!
                         })}
                     ></input>
                     <button

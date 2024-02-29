@@ -5,3 +5,5 @@ export const FOOD_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_
 export const RATING_LOGO = "https://api.iconify.design/ic:outline-star-outline.svg?color=%23ffffff"
 
 export const RESTAURANTGROUPCARD = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.89960&lng=80.22090&restaurantId=";
+
+export const RESTAURANTHOMECARD = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.89960&lng=80.22090&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";

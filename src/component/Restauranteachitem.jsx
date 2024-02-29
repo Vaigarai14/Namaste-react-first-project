@@ -4,7 +4,7 @@ export const Restaurenteachitem = ({ eachcard }) => {
         <div>
             {
                 eachcard.card.card.itemCards.map(({ card: { info } }) => (
-                    <div className=' flex justify-between items-center border-b-2 pb-4 pt-2 my-1 ' key={info.id}>
+                    <div className=' flex justify-between items-center border-b-2 pb-6 pt-2 my-1 ' key={info.id}>
                         <div className=''>
                             <h1 className='py-4 text-lg '>{info.name}</h1>
                             <p className='font-semibold '> ₹ {info.price / 100 || info.defaultPrice / 100}

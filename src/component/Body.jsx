@@ -1,41 +1,33 @@
 import RestaurantCard, { withpromotedlabel } from './RestaurantCard'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import useonlinestatus from '../utils/useonlinestatus'
 import Shimmer from './Shimmer';
 import { useContext } from 'react';
 import UserContext from '../utils/UserContext';
+import useRestaurentMenu from '../utils/useRestaurentMenu';
 
 const Body = () => {
     const onlinestatus = useonlinestatus()
 
-    const Newpromotedcard = withpromotedlabel(RestaurantCard)
+    const { orignallist } = useRestaurentMenu()
 
-    let [orignallist, setorignallist] = useState([]);
+    const Newpromotedcard = withpromotedlabel(RestaurantCard)
 
     let [filteredlistofitem, setfilteredlistofitem] = useState([])
 
     let [searchText, setsearchText] = useState("");
 
-    const { setname } = useContext(UserContext)
-
-    // console.log(orignallist);
+    const { setname } = useContext(UserContext)  // use context used in header 
 
     useEffect(() => {
-        fetchdata();
-    }, [])
+        setfilteredlistofitem(orignallist)
+    }, [orignallist])
 
-
-    const fetchdata = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.89960&lng=80.22090&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-        const jsondata = await data.json()
-        let Restaurentdatas = jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        setorignallist(Restaurentdatas)
-        setfilteredlistofitem(Restaurentdatas)
-    }
 
     return onlinestatus === false ? <div className='items-center h-[35em] flex justify-center'><img src='https://cdni.iconscout.com/illustration/premium/thumb/man-upset-with-no-wifi-4898768-4084522.png'></img></div> :
         orignallist.length === 0 ? <Shimmer /> : (
+
             <div >
                 <div id="body-container" className='flex justify-center m-12'>
                     <input
@@ -79,6 +71,8 @@ const Body = () => {
                                 to={"/restaurant/" + rest.info.id}>
                                 {rest.info.aggregatedDiscountInfoV2 !== undefined ? <RestaurantCard restData={rest} />
                                     : <Newpromotedcard restData={rest} />}</Link>
+
+
                         })
                     }
                 </div>

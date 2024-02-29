@@ -31,15 +31,3 @@ export const Restaurentcarddropdown = ({ data, showitem, showalldata }) => {
 }
 
 
-
-// let itemCards = []
-// if (item?.categories) {
-//     itemCards = item?.categories[0]?.itemCards
-// }
-// else if (item?.categories) {
-//     itemCards = item?.categories
-// }
-// else if (item?.itemCards) {
-//     itemCards = item?.itemCards
-// [2]?.card?.card
-// }
